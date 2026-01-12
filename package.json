@@ -1,5 +1,5 @@
 {
-  "name": "template-baseline",
+  "name": "ai-saas",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.3",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
     "next": "16.1.1",

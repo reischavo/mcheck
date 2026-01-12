@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Your Site Name",
+  name: "Nexus AI",
   description:
-    "A modern, accessible landing page template built with Next.js, Tailwind CSS, and TypeScript.",
-  url: "https://example.com",
+    "Build, deploy, and scale AI-powered applications with enterprise-grade infrastructure. From ideation to production in minutes.",
+  url: "https://nexus-ai.com",
   ogImage: "/og-image.png",
-  creator: "@yourhandle",
+  creator: "@nexusai",
   authors: [
     {
-      name: "Your Name",
-      url: "https://example.com",
+      name: "Nexus AI",
+      url: "https://nexus-ai.com",
     },
   ],
   keywords: [
-    "landing page",
-    "template",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "TypeScript",
+    "AI",
+    "artificial intelligence",
+    "machine learning",
+    "AI platform",
+    "LLM",
+    "GPT",
+    "AI API",
+    "developer tools",
+    "AI infrastructure",
   ],
 } as const;
 

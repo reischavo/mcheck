@@ -1,14 +1,16 @@
-# Template Baseline
+# AI SaaS Landing Page Template
 
-A production-ready Next.js 16+ landing page template with SEO defaults, theming, motion, accessibility, and Tailwind CSS v4.
+A premium Next.js 16+ landing page template designed for AI products and SaaS applications. Features stunning WebGL effects, smooth animations, and a conversion-focused layout.
 
 ## Features
 
 - ✅ **Next.js 16+** with App Router
-- ✅ **TypeScript** (strict mode)
-- ✅ **Tailwind CSS v4** with design tokens
-- ✅ **Dark Mode** via next-themes
+- ✅ **TypeScript** (strict mode with noUncheckedIndexedAccess)
+- ✅ **Tailwind CSS v4** with custom design tokens
+- ✅ **Dark Mode** via next-themes with smooth transitions
+- ✅ **WebGL Effects** - Fluid cursor, image bulge effects
 - ✅ **Motion** via motion/react with reduced-motion support
+- ✅ **GSAP Animations** - Scroll-triggered image reveal gallery
 - ✅ **SEO Ready** - metadata, Open Graph, Twitter cards
 - ✅ **Accessibility** - skip links, focus rings, ARIA labels
 - ✅ **Edge Compatible** - no Node-only APIs
@@ -48,19 +50,36 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ├── app/
 │   ├── globals.css        # Design tokens & base styles
 │   ├── layout.tsx         # Root layout with providers
-│   ├── page.tsx           # Home page example
+│   ├── page.tsx           # Landing page
 │   ├── robots.ts          # Dynamic robots.txt
 │   ├── sitemap.ts         # Dynamic sitemap
-│   ├── icon.svg           # Favicon
-│   └── apple-icon.svg     # Apple touch icon
+│   └── icon.svg           # Favicon
 ├── components/
+│   ├── bottom-cta.tsx     # Bottom call-to-action section
+│   ├── faq.tsx            # FAQ accordion section
+│   ├── fluid-cursor.tsx   # WebGL fluid cursor effect
+│   ├── footer.tsx         # Site footer with links
+│   ├── header.tsx         # Navigation header
+│   ├── hero.tsx           # Hero section with prompt UI
+│   ├── image-reveal.tsx   # GSAP scroll-triggered gallery
+│   ├── pricing.tsx        # Pricing cards section
 │   ├── providers.tsx      # Theme & motion providers
-│   ├── theme-toggle.tsx   # Accessible theme switcher
-│   └── skip-to-content.tsx # Skip link for a11y
+│   ├── showcase-cards.tsx # WebGL bulge effect cards
+│   ├── skip-to-content.tsx # Skip link for a11y
+│   ├── smooth-scroll.tsx  # Lenis smooth scrolling
+│   ├── stats.tsx          # Animated statistics bars
+│   ├── testimonials.tsx   # Testimonials carousel
+│   ├── text-reveal.tsx    # Scroll-triggered text animation
+│   ├── theme-switch.tsx   # Floating theme toggle
+│   ├── theme-toggle.tsx   # Button theme toggle
+│   ├── tools-carousel.tsx # Draggable cards carousel
+│   └── trusted-by.tsx     # Logo loop section
 ├── lib/
 │   ├── metadata.ts        # SEO metadata utilities
 │   └── motion.tsx         # Motion components & hooks
 └── public/
+    ├── img/               # Image assets
+    ├── svg/               # SVG assets
     └── site.webmanifest   # PWA manifest
 ```
 
@@ -148,4 +167,8 @@ All code is Edge-compatible. No Node.js-only APIs are used in runtime code. The 
 
 ## License
 
-MIT
+This template is licensed for use in commercial projects. You may not resell or redistribute the template itself.
+
+---
+
+Built with ❤️ using Next.js, Tailwind CSS, and Motion
