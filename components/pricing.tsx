@@ -107,7 +107,7 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
       </div>
 
       <div className="mt-8 flex-1">
-        <div className="flex h-full flex-col rounded-xl bg-muted/75 p-6">
+        <div className="flex h-full flex-col rounded-xl bg-muted/50 p-6">
           <ul className="flex-1 space-y-4">
             {plan.features.map((feature) => (
               <li key={feature} className="flex items-start gap-3">
@@ -122,7 +122,7 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
             className={`mt-6 w-full cursor-pointer rounded-full py-4 text-base font-semibold transition-all ${
               plan.popular
                 ? "bg-accent text-accent-foreground hover:opacity-90"
-                : "bg-background text-foreground hover:bg-background/70"
+                : "bg-foreground text-background hover:bg-foreground/70"
             }`}
           >
             {plan.cta}
