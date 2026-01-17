@@ -1,9 +1,26 @@
 "use client";
 
-import { useRef, useEffect, useCallback, type ReactNode } from "react";
+import { useRef, useEffect, useCallback, useState, useSyncExternalStore, type ReactNode } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import NextImage from "next/image";
+
+function getIsSafari(): boolean {
+  if (typeof window === "undefined") return false;
+  const ua = navigator.userAgent.toLowerCase();
+  return ua.includes("safari") && !ua.includes("chrome") && !ua.includes("chromium");
+}
+
+const emptySubscribe = () => () => {};
+
+function useIsSafari(): boolean {
+  return useSyncExternalStore(
+    emptySubscribe,
+    getIsSafari,
+    () => false
+  );
+}
 
 interface CardData {
   title: string;
@@ -129,6 +146,54 @@ interface BulgeCardProps {
   index: number;
 }
 
+// Safari-friendly card with CSS hover effect instead of WebGL
+function SafariCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="relative border border-border/25 aspect-4/5 w-full overflow-hidden rounded-xl cursor-pointer"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div 
+        className="absolute inset-0"
+        animate={{ scale: isHovered ? 1.1 : 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <NextImage
+          src={imageSrc}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+      </motion.div>
+      <div
+        className="pointer-events-none absolute inset-0 mix-blend-color"
+        style={{
+          background: "linear-gradient(135deg, #333DA7 0%, #7388DF 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <motion.div 
+        className="absolute inset-0"
+        animate={{ backgroundColor: isHovered ? "rgba(0,0,0,0.1)" : "rgba(0,0,0,0.2)" }}
+        transition={{ duration: 0.3 }}
+      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h3 className="text-2xl font-medium tracking-tight text-white md:text-3xl">
+          {title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+}
+
 function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -139,6 +204,7 @@ function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
   const uniformsRef = useRef<Record<string, WebGLUniformLocation | null>>({});
   const imageLoadedRef = useRef(false);
   const imageSizeRef = useRef({ width: 1, height: 1 });
+  const isDisposedRef = useRef(false);
 
   const mouseX = useRef(0.5);
   const mouseY = useRef(0.5);
@@ -148,6 +214,7 @@ function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
   const targetBulge = useRef(0);
 
   useEffect(() => {
+    isDisposedRef.current = false;
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
@@ -224,7 +291,7 @@ function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
     const image = new Image();
     image.crossOrigin = "anonymous";
     image.onload = () => {
-      if (!gl || !texture) return;
+      if (!gl || !texture || isDisposedRef.current) return;
       imageSizeRef.current = { width: image.width, height: image.height };
       gl.bindTexture(gl.TEXTURE_2D, texture);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
@@ -253,6 +320,8 @@ function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
     window.addEventListener("resize", resize);
 
     const render = () => {
+      if (isDisposedRef.current) return;
+      
       if (!gl || !programRef.current || !imageLoadedRef.current) {
         rafRef.current = requestAnimationFrame(render);
         return;
@@ -273,10 +342,14 @@ function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
     render();
 
     return () => {
+      isDisposedRef.current = true;
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
-      gl.deleteProgram(program);
-      gl.deleteTexture(texture);
+      if (program) gl.deleteProgram(program);
+      if (texture) gl.deleteTexture(texture);
+      glRef.current = null;
+      programRef.current = null;
+      textureRef.current = null;
     };
   }, [imageSrc]);
 
@@ -330,6 +403,9 @@ function BulgeCard({ title, imageSrc, index }: BulgeCardProps): ReactNode {
 }
 
 export function ShowcaseCards(): ReactNode {
+  const isSafari = useIsSafari();
+  const CardComponent = isSafari ? SafariCard : BulgeCard;
+
   return (
     <section className="px-4 py-20 sm:px-6 md:py-28 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -339,7 +415,7 @@ export function ShowcaseCards(): ReactNode {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, index) => (
-            <BulgeCard
+            <CardComponent
               key={card.title}
               title={card.title}
               imageSrc={card.image}
