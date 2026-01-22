@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Nexus AI",
+  name: "React Bits Pro - AI SaaS Template",
   description:
     "Build, deploy, and scale AI-powered applications with enterprise-grade infrastructure. From ideation to production in minutes.",
   url: "https://nexus-ai.com",
