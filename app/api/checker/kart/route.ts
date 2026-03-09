@@ -373,7 +373,7 @@ async function processCardWargame(cardData: string): Promise<{ status: string; m
         billing_email: email,
         checkout_as_guest: "1",
       });
-      if (guestNonce) guestParams.set(guestNonce[1], guestNonce[2]);
+      if (guestNonce && guestNonce[1] && guestNonce[2]) guestParams.set(guestNonce[1], guestNonce[2]);
       const guestUrl = guestFormAction ? (guestFormAction.startsWith("http") ? guestFormAction : WARGAME_BASE + guestFormAction) : `${WARGAME_BASE}/en/checkout`;
       await httpsGet(guestUrl, {
         jar,
