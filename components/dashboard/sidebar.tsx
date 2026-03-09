@@ -239,7 +239,6 @@ export function Sidebar({
 }) {
   const pathname = usePathname();
   const isAdmin = user?.role === "super_admin" || user?.role === "mini_admin";
-  const membershipColor = MEMBERSHIP_COLORS[user?.membership ?? "free"] ?? "text-muted-foreground";
 
   const perms = user?.permissions ?? "none";
   const canFullSorgu = isAdmin || perms === "full";
