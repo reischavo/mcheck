@@ -16,6 +16,7 @@ const GATEWAYS = [
     tag: "B3",
     description: "PayPal GraphQL · WooCommerce checkout üzerinden CVV/AVS doğrulama",
     color: "blue",
+    disabled: false,
   },
   {
     id: "wargame",
@@ -23,6 +24,7 @@ const GATEWAYS = [
     tag: "$3",
     description: "Düşük tutarlı ürün üzerinden kart doğrulama",
     color: "emerald",
+    disabled: false,
   },
   {
     id: "braintree",
