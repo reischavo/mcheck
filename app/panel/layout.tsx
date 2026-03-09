@@ -13,8 +13,8 @@ export default async function PanelLayout({ children }: { children: ReactNode })
   const dbUser = session.user.id ? getUserById(session.user.id) : null;
 
   const sessionUser = {
-    name: dbUser?.name ?? session.user.name,
-    email: dbUser?.email ?? session.user.email,
+    name: dbUser?.name ?? session.user.name ?? "User",
+    email: dbUser?.email ?? session.user.email ?? "",
     role: dbUser?.role ?? (session.user as Record<string, unknown>).role as string ?? "user",
     membership: dbUser?.membership ?? "free",
     balance: dbUser?.balance ?? 0,
