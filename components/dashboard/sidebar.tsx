@@ -225,13 +225,6 @@ const PERM_COLORS: Record<string, string> = {
   full: "text-emerald-400",
 };
 
-const MEMBERSHIP_COLORS: Record<string, string> = {
-  free: "text-muted-foreground",
-  basic: "text-blue-400",
-  pro: "text-accent",
-  enterprise: "text-amber-400",
-};
-
 export function Sidebar({
   user,
 }: {
@@ -243,14 +236,6 @@ export function Sidebar({
   const perms = user?.permissions ?? "none";
   const canFullSorgu = isAdmin || perms === "full";
   const canPremiumSorgu = isAdmin || perms === "sorgu" || perms === "full";
-  const canChecker = isAdmin || perms === "checker" || perms === "full";
-
-  // For "sorgu" perm: only show premium-cozumler in nav
-  const navQueryFiltered: NavItem[] = canFullSorgu
-    ? navQuery
-    : canPremiumSorgu
-    ? navQuery.filter((item) => item.label === "Premium Çözümler")
-    : [];
 
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-60 overflow-y-auto overflow-x-hidden border-r border-border bg-card scrollbar-hide">
