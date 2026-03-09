@@ -107,7 +107,7 @@ export function KartCheckerClient({
   const [results, setResults] = useState<CheckResult[]>([]);
   const [currentCard, setCurrentCard] = useState("");
   const [progress, setProgress] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [_total, setTotal] = useState(0);
   const abortRef = useRef(false);
 
   const lives = results.filter((r) => r.status === "live");
