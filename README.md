@@ -1,174 +1,120 @@
-# AI SaaS Landing Page Template
+# mcheck.co - Sorgu Platformu
 
-A premium Next.js 16+ landing page template designed for AI products and SaaS applications. Features stunning WebGL effects, smooth animations, and a conversion-focused layout.
+Türkiye'nin güvenilir sorgu çözümleri platformu. TC, GSM, Mernis, adres ve daha fazlası için API tabanlı hizmetler.
 
-## Features
+## Özellikler
 
-- ✅ **Next.js 16+** with App Router
-- ✅ **TypeScript** (strict mode with noUncheckedIndexedAccess)
-- ✅ **Tailwind CSS v4** with custom design tokens
-- ✅ **Dark Mode** via next-themes with smooth transitions
-- ✅ **WebGL Effects** - Fluid cursor, image bulge effects
-- ✅ **Motion** via motion/react with reduced-motion support
-- ✅ **GSAP Animations** - Scroll-triggered image reveal gallery
-- ✅ **SEO Ready** - metadata, Open Graph, Twitter cards
-- ✅ **Accessibility** - skip links, focus rings, ARIA labels
-- ✅ **Edge Compatible** - no Node-only APIs
+- 🔐 Güvenli kimlik doğrulama (NextAuth v5)
+- 💳 Kripto ödeme sistemi
+- 🛒 Market sistemi (kart satışı)
+- 🎫 Destek ticket sistemi
+- 👥 Kullanıcı yönetimi (Super Admin, Mini Admin, User)
+- 📊 Admin paneli
+- 🔍 Çoklu sorgu tipleri (GSM, TC, Adres, Vesika, Seçmen)
+- 💰 Bakiye sistemi
+- 🎨 Modern UI (Tailwind CSS)
 
-## Getting Started
+## Teknolojiler
 
-### Install dependencies
+- Next.js 16
+- React 19
+- TypeScript
+- NextAuth v5
+- Tailwind CSS 4
+- MySQL (sorgu veritabanları)
+- JSON (kullanıcı verileri)
+
+## Kurulum
+
+### 1. Bağımlılıkları Yükle
 
 ```bash
 npm install
 ```
 
-### Run development server
+### 2. Environment Variables
+
+`.env.local` dosyası oluşturun:
+
+```env
+AUTH_SECRET=got0GXssEyADEjm71nndiVoIotTXTcAequMhF+89Dj0=
+AUTH_URL=http://localhost:3000
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_PORT=3306
+```
+
+### 3. Veritabanı Kurulumu
+
+MySQL veritabanlarını kurun (detaylar için `VERITABANI-KURULUM.md`)
+
+### 4. Geliştirme Sunucusu
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Tarayıcıda `http://localhost:3000` açın.
 
-## Scripts
+## Admin Girişi
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run lint:fix` | Fix ESLint errors |
-| `npm run format` | Format code with Prettier |
-| `npm run format:check` | Check code formatting |
-| `npm run typecheck` | Run TypeScript type checking |
+- Email: `admin@mcheck.co`
+- Şifre: `mohawk`
 
-## Project Structure
+## Deployment
 
-```
-├── app/
-│   ├── globals.css        # Design tokens & base styles
-│   ├── layout.tsx         # Root layout with providers
-│   ├── page.tsx           # Landing page
-│   ├── robots.ts          # Dynamic robots.txt
-│   ├── sitemap.ts         # Dynamic sitemap
-│   └── icon.svg           # Favicon
-├── components/
-│   ├── bottom-cta.tsx     # Bottom call-to-action section
-│   ├── faq.tsx            # FAQ accordion section
-│   ├── fluid-cursor.tsx   # WebGL fluid cursor effect
-│   ├── footer.tsx         # Site footer with links
-│   ├── header.tsx         # Navigation header
-│   ├── hero.tsx           # Hero section with prompt UI
-│   ├── image-reveal.tsx   # GSAP scroll-triggered gallery
-│   ├── pricing.tsx        # Pricing cards section
-│   ├── providers.tsx      # Theme & motion providers
-│   ├── showcase-cards.tsx # WebGL bulge effect cards
-│   ├── skip-to-content.tsx # Skip link for a11y
-│   ├── smooth-scroll.tsx  # Lenis smooth scrolling
-│   ├── stats.tsx          # Animated statistics bars
-│   ├── testimonials.tsx   # Testimonials carousel
-│   ├── text-reveal.tsx    # Scroll-triggered text animation
-│   ├── theme-switch.tsx   # Floating theme toggle
-│   ├── theme-toggle.tsx   # Button theme toggle
-│   ├── tools-carousel.tsx # Draggable cards carousel
-│   └── trusted-by.tsx     # Logo loop section
-├── lib/
-│   ├── metadata.ts        # SEO metadata utilities
-│   └── motion.tsx         # Motion components & hooks
-└── public/
-    ├── img/               # Image assets
-    ├── svg/               # SVG assets
-    └── site.webmanifest   # PWA manifest
+Detaylı deployment rehberi için `DEPLOY.md` dosyasına bakın.
+
+### Hızlı Deploy (Vercel)
+
+1. GitHub'a yükle:
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/USERNAME/REPO.git
+git push -u origin main
 ```
 
-## Customization
+2. Vercel'e git: https://vercel.com
+3. Repository'yi import et
+4. Environment variables ekle
+5. Deploy
 
-### 1. Update Site Configuration
+## Proje Yapısı
 
-Edit `lib/metadata.ts` to update:
-- Site name, description, and URL
-- Social media handles
-- Keywords and authors
-
-### 2. Replace Icons
-
-Replace the following files with your brand assets:
-- `app/icon.svg` - Favicon (32x32)
-- `app/apple-icon.svg` - Apple touch icon (180x180)
-- `public/og-image.png` - Open Graph image (1200x630)
-- `public/icon-192.png` - PWA icon (192x192)
-- `public/icon-512.png` - PWA icon (512x512)
-
-### 3. Customize Design Tokens
-
-Edit `app/globals.css` to modify:
-- Color palette (primary, neutral, semantic colors)
-- Spacing scale
-- Border radii
-- Shadows and gradients
-- Typography
-
-### 4. Add Routes
-
-Create new routes in the `app/` directory:
-
-```tsx
-// app/about/page.tsx
-import { createMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = createMetadata({
-  title: "About Us",
-  description: "Learn more about our company.",
-  path: "/about",
-});
-
-export default function AboutPage() {
-  return <main id="main-content">...</main>;
-}
+```
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   ├── panel/             # Kullanıcı paneli
+│   ├── login/             # Giriş sayfası
+│   └── kayit/             # Kayıt sayfası
+├── components/            # React componentleri
+├── lib/                   # Utility fonksiyonlar
+│   ├── db.ts             # JSON veritabanı işlemleri
+│   └── mysql.ts          # MySQL sorgu fonksiyonları
+├── data/                  # JSON veritabanı dosyaları
+├── datalar/              # MySQL veritabanı dosyaları
+└── public/               # Statik dosyalar
 ```
 
-## Design Tokens
+## Scriptler
 
-The template uses CSS custom properties for theming. Key tokens:
+- `npm run dev` - Geliştirme sunucusu
+- `npm run build` - Production build
+- `npm run start` - Production sunucu
+- `npm run lint` - Kod kontrolü
+- `npm run format` - Kod formatlama
 
-### Colors
-- `--background` / `--foreground` - Page background and text
-- `--muted` / `--muted-foreground` - Subtle backgrounds and text
-- `--accent` / `--accent-foreground` - Primary action colors
-- `--border` / `--ring` - Borders and focus rings
+## Bat Dosyaları (Windows)
 
-### Shadows
-- `--shadow-sm` through `--shadow-2xl` - Elevation levels
+- `start.bat` - Sunucuyu başlat
+- `clean-start.bat` - Cache temizle ve başlat
+- `install-mysql.bat` - MySQL2 kütüphanesini yükle
+- `deploy.bat` - GitHub'a yükle
 
-### Gradients
-- `--gradient-primary` - Brand gradient
-- `--gradient-subtle` - Section backgrounds
-- `--gradient-radial` - Hero backgrounds
+## Lisans
 
-## Accessibility
-
-The template includes:
-- Skip-to-content link
-- Visible focus rings (keyboard navigation)
-- ARIA labels on interactive elements
-- Reduced motion support
-- Proper heading hierarchy
-- WCAG 2.1 AA contrast compliance
-
-## Edge Runtime
-
-All code is Edge-compatible. No Node.js-only APIs are used in runtime code. The template can be deployed to:
-- Vercel Edge Functions
-- Cloudflare Workers
-- Any edge-capable platform
-
-## License
-
-This template is licensed for use in commercial projects. You may not resell or redistribute the template itself.
-
----
-
-Built with ❤️ using Next.js, Tailwind CSS, and Motion
+Özel proje - Tüm hakları saklıdır.

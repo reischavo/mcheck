@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "React Bits Pro - AI SaaS Template",
+  name: "mcheck.co - Sorgu Çözümleri",
   description:
-    "Build, deploy, and scale AI-powered applications with enterprise-grade infrastructure. From ideation to production in minutes.",
-  url: "https://nexus-ai.com",
+    "TC, GSM, Mernis, adres ve daha fazlası için güvenilir sorgu çözümleri. Ücretsiz üyelik, hızlı API erişimi.",
+  url: "https://mcheck.co",
   ogImage: "/og-image.png",
-  creator: "@nexusai",
+  creator: "@mcheck",
   authors: [
     {
-      name: "Nexus AI",
-      url: "https://nexus-ai.com",
+      name: "mcheck.co",
+      url: "https://mcheck.co",
     },
   ],
   keywords: [
-    "AI",
-    "artificial intelligence",
-    "machine learning",
-    "AI platform",
-    "LLM",
-    "GPT",
-    "AI API",
-    "developer tools",
-    "AI infrastructure",
+    "TC sorgulama",
+    "GSM sorgulama",
+    "Mernis sorgulama",
+    "adres sorgulama",
+    "sorgu API",
+    "TC GSM",
+    "GSM TC",
+    "Türkiye sorgu",
   ],
 } as const;
 
@@ -53,7 +52,7 @@ export const baseMetadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "tr_TR",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -108,6 +107,7 @@ export function createMetadata({
       title: title ?? siteConfig.name,
       description: description ?? siteConfig.description,
       url,
+      locale: "tr_TR",
       images: [
         {
           url: ogImage,

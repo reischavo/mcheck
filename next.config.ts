@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["lucide-react"],
   // Disable source maps in production to protect code
   productionBrowserSourceMaps: false,
   // Remove console.log in production
