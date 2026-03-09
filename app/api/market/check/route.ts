@@ -70,7 +70,7 @@ function httpsGet(url: string, opts: {
         rejectUnauthorized: false,
       }, (res: IncomingMessage) => {
         const sc = res.headers["set-cookie"];
-        if (sc) absorbCookies(jar, Array.isArray(sc) ? sc.join(", ") : sc);
+        if (sc) absorbCookies(opts.jar, Array.isArray(sc) ? sc.join(", ") : sc);
         if (res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
           if (redirects++ >= MAX) { reject(new Error("Too many redirects")); return; }
           const next = new URL(res.headers.location, target).toString();
