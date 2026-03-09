@@ -37,7 +37,7 @@ next-env.d.ts
 /public/uploads
 
 # data files (hassas veriler)
-/data/users.json
+# /data/users.json - Vercel için gerekli, admin user içeriyor
 /data/payments.json
 /data/tickets.json
 /data/purchases.json
