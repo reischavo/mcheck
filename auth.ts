@@ -16,6 +16,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const email = String(credentials.email).toLowerCase().trim();
         const password = String(credentials.password);
 
+        // Hardcoded admin for Vercel (file system is read-only)
+        if (email === "admin@mcheck.co" && password === "admin123") {
+          return {
+            id: "1",
+            name: "admin",
+            email: "admin@mcheck.co",
+            image: null,
+            role: "super_admin",
+            membership: "free",
+            balance: 100,
+            permissions: "full",
+          };
+        }
+
         const { getUserByEmail } = await import("@/lib/db");
         const { compare } = await import("bcryptjs");
 
