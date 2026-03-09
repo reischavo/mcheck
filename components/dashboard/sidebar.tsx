@@ -233,10 +233,6 @@ export function Sidebar({
   const pathname = usePathname();
   const isAdmin = user?.role === "super_admin" || user?.role === "mini_admin";
 
-  const perms = user?.permissions ?? "none";
-  const canFullSorgu = isAdmin || perms === "full";
-  const canPremiumSorgu = isAdmin || perms === "sorgu" || perms === "full";
-
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-60 overflow-y-auto overflow-x-hidden border-r border-border bg-card scrollbar-hide">
       {/* Logo - sticky */}
