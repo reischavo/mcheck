@@ -1,14 +1,14 @@
 [
   {
     "id": "1",
-    "name": "sevval",
+    "name": "admin",
     "email": "admin@mcheck.co",
-    "password": "$2a$10$bmoAC.8ZQHFwb4TVt4tgWOEUVI.AqMiB3jZ8xF84j57MSdDuvcRii",
+    "password": "$2a$10$Yy0Odut80Erz3NzRr4hfl.2xoWhahGRzF4A9tTHpbfxxoCGu.EVS.",
     "role": "super_admin",
-    "balance": 4,
+    "balance": 100,
     "membership": "free",
     "createdAt": "2025-01-01T00:00:00.000Z",
     "permissions": "full",
-    "avatar": "/uploads/avatars/1.jpg"
+    "avatar": null
   }
 ]
