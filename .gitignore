@@ -36,13 +36,8 @@ next-env.d.ts
 # uploads
 /public/uploads
 
-# data files (hassas veriler)
-# /data/users.json - Vercel için gerekli, admin user içeriyor
-/data/payments.json
-/data/tickets.json
-/data/purchases.json
-/data/market.json
-/data/api-keys.json
+# data files - Vercel için gerekli, boş array ile başlıyor
+# Hassas veriler production'da environment variables'dan gelecek
 
 # database files
 /datalar
