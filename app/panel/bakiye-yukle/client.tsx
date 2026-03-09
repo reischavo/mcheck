@@ -82,6 +82,7 @@ const PLANS = [
     icon: null,
     subtitle: "Sorgu çözümlerine tam erişim",
     features: ["Mernis 2026", "GSM ↔ TC", "Adres & Aile", "Premium Sorgular", "Diğer Çözümler"],
+    highlight: false,
   },
   {
     id: "checker",
@@ -99,6 +100,7 @@ const PLANS = [
     icon: null,
     subtitle: "Tüm araçlara sınırsız erişim",
     features: ["Tüm Sorgu Çözümleri", "Kart Checker", "BIN Sorgulama", "Market Erişimi", "Öncelikli Destek"],
+    highlight: false,
   },
 ] as const;
 
